@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alif Naturalist – Website Requirement Portal</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Figtree:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#f4efe3;--card:#fff;--ink:#1f2a22;--mut:#5b6b60;--head:#1d3b27;--btn:#2c5a3a;--btnt:#fff;--mist:#e6eedc;--line:#e2d9c3;--err:#b3261e;--hero:#1d3b27;--herot:#f4efe3;--shadow:rgba(29,59,39,.22);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141b16;--card:#1d2720;--ink:#ecefe6;--mut:#a3b0a6;--head:#dfe9d4;--btn:#8fbf7a;--btnt:#10200f;--mist:#263629;--line:#33443a;--err:#f2b8b5;--hero:#0f1a12;--shadow:rgba(0,0,0,.5)}}
+:root[data-theme="dark"]{--bg:#141b16;--card:#1d2720;--ink:#ecefe6;--mut:#a3b0a6;--head:#dfe9d4;--btn:#8fbf7a;--btnt:#10200f;--mist:#263629;--line:#33443a;--err:#f2b8b5;--hero:#0f1a12;--shadow:rgba(0,0,0,.5)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Figtree,system-ui,sans-serif}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;color:var(--head);margin:0;font-weight:500}
+.hero{background:var(--hero);color:var(--herot);padding:84px 24px 96px}
+.hero div{max-width:960px;margin:auto}
+.hero h1{color:var(--herot);font-size:clamp(2.6rem,7vw,4.8rem);line-height:1.04;max-width:760px}
+.hero p{max-width:520px;font-size:1.15rem;opacity:.82;margin:22px 0 34px}
+.hero small{display:block;margin-bottom:22px;opacity:.7}
+.cta{display:inline-block;background:var(--herot);color:var(--hero);padding:13px 30px;border-radius:99px;font-weight:600;text-decoration:none;transition:transform .2s}
+.cta:hover{transform:translateY(-2px)}
+main{max-width:860px;margin:auto;padding:44px 16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:clamp(20px,5vw,40px);box-shadow:0 8px 28px -14px var(--shadow)}
+.top{display:flex;justify-content:space-between;font-size:.9rem;color:var(--mut);margin-bottom:8px}
+.bar{height:8px;background:var(--line);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--btn);border-radius:9px;transition:width .5s}
+.step{margin-top:30px;animation:in .35s ease}
+@keyframes in{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.step{animation:none}html{scroll-behavior:auto}}
+.step h2{font-size:1.9rem}.hint{color:var(--mut);margin:4px 0 22px}
+.grid{display:grid;gap:16px;grid-template-columns:1fr 1fr}
+@media (max-width:600px){.grid{grid-template-columns:1fr}}
+.full{grid-column:1/-1}
+label,.lbl{display:block;font-size:.88rem;font-weight:500;color:var(--head);margin-bottom:6px}
+.req{color:var(--err)}
+input[type=text],input[type=tel],input[type=email],input[type=url],input[type=number],input[type=date],select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;outline:none;transition:border-color .2s,box-shadow .2s}
+input:focus,select:focus,textarea:focus{border-color:var(--btn);box-shadow:0 0 0 3px color-mix(in srgb,var(--btn) 25%,transparent)}
+input[readonly]{background:var(--mist)}
+.err{color:var(--err);font-size:.85rem;margin-top:4px}
+.opts{display:grid;gap:8px;grid-template-columns:1fr 1fr}@media (max-width:600px){.opts{grid-template-columns:1fr}}
+.opt{display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:10px 14px;cursor:pointer;margin:0;font-weight:400;color:var(--ink)}
+.opt:has(input:checked){background:var(--mist);border-color:var(--btn)}.opt input{accent-color:var(--btn)}
+.btn,.ghost{font:inherit;font-weight:500;border-radius:99px;padding:11px 28px;cursor:pointer;border:1px solid var(--btn);transition:background .2s}
+.btn{background:var(--btn);color:var(--btnt)}.btn:hover{filter:brightness(1.08)}
+.ghost{background:none;color:var(--btn)}.ghost:hover{background:var(--mist)}.ghost:disabled{opacity:.4;cursor:default}
+button:focus-visible,a:focus-visible{outline:2px solid var(--btn);outline-offset:2px}
+.nav{display:flex;justify-content:space-between;margin-top:30px}
+.prod{border:1px solid var(--line);background:color-mix(in srgb,var(--mist) 40%,transparent);border-radius:18px;padding:20px;margin-bottom:18px}
+.prod header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.prod h3{font-size:1.2rem}
+.link{background:none;border:0;color:var(--err);text-decoration:underline;cursor:pointer;font:inherit;font-size:.9rem}
+.drop{display:block;border:1.5px dashed var(--btn);border-radius:12px;padding:18px;text-align:center;color:var(--btn);cursor:pointer;font-weight:400;margin:0}.drop:hover{background:var(--mist)}
+.thumbs{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}.thumbs div{position:relative}.thumbs img{width:76px;height:76px;object-fit:cover;border-radius:12px;display:block}
+.thumbs button{position:absolute;top:-7px;right:-7px;width:22px;height:22px;border-radius:50%;border:0;background:var(--head);color:var(--card);cursor:pointer}
+.rev{border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin-bottom:14px}.rev header{display:flex;justify-content:space-between}.rev h3{font-size:1.1rem}
+.rev dl{margin:8px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:4px 24px;font-size:.9rem}@media (max-width:600px){.rev dl{grid-template-columns:1fr}}
+.rev dt{color:var(--mut)}.rev dd{margin:0 0 6px}
+.ok{text-align:center;padding:30px 0}.ok code{display:block;font-size:1.6rem;color:var(--btn);margin:8px 0 14px}
+footer{text-align:center;color:var(--mut);font-size:.88rem;padding:10px 16px 48px}
+footer b{display:block;font-family:Fraunces,serif;font-size:1.3rem;color:var(--head);font-weight:600}
+</style>
+</head>
+<body>
+<section class="hero"><div>
+<small>Alif Naturalist – Website Requirement Portal</small>
+<h1>Let’s Build Your Digital Store.</h1>
+<p>Share your business requirements and let us create an exceptional online shopping experience.</p>
+<a class="cta" href="#start">Start Your Project</a></div></section>
+<main id="start"><div class="card" id="app"></div></main>
+<footer><b>InsightFlux Analytics</b>Developed by InsightFlux Analytics &amp; Software Solutions<br>AI-Powered Insights. Smarter Decisions.<br><br>Design preview: nothing entered here is saved or sent.</footer>
+<script>
+const YN=['Yes','No'];
+const FEAT=['User Registration and Login','Product Search','Product Categories','Product Filters','Shopping Cart','Wishlist','Checkout','Online Payment Gateway','UPI Payments','Cash on Delivery','Order Tracking','Coupon Management','Inventory Management','Admin Dashboard','WhatsApp Integration','Customer Reviews and Ratings','Email Notifications','Invoice Generation'];
+// field: [key,label,type,required,options]
+const S=[
+{t:'Organization',h:'Tell us who you are and how to reach you.',f:[['name','Organization name','',1],['founder','Founder name','',1],['contact','Contact person name'],['mobile','Mobile number','tel',1],['wa','WhatsApp number','tel'],['email','Official email address','email',1],['addr','Business address','ta'],['site','Existing website URL','url'],['ig','Instagram profile','url'],['fb','Facebook profile','url'],['logo','Company logo','logo']]},
+{t:'Business',h:'Help us understand your brand and customers.',f:[['cat','Business category'],['year','Year of establishment','number'],['aud','Target audience'],['loc','Business location'],['about','About the organization','ta'],['brand','Brand description','ta']]},
+{t:'Products',h:'Add every product you want to sell. You can add as many as you need.',f:[]},
+{t:'Features',h:'Select everything your store should do.',f:[['features','Store features','multi',0,FEAT]]},
+{t:'Payment & delivery',h:'How customers pay and how orders reach them.',f:[['pay','Preferred payment methods','multi',0,['UPI','Credit / Debit Card','Net Banking','Cash on Delivery','Wallets']],['gw','Payment gateway preference','sel',0,['Razorpay','PhonePe','Cashfree','Stripe','PayU','No preference']],['dloc','Delivery locations'],['ship','Shipping charges'],['free','Free shipping conditions'],['partner','Delivery partner preference'],['ret','Return and refund policy','ta'],['eta','Estimated delivery time']]},
+{t:'Design',h:'Show us the look you have in mind.',f:[['colour','Preferred colour theme'],['lang','Website language','sel',0,['English','Tamil','Both']],['style','Preferred website style','sel',0,['Modern minimal','Traditional','Bold and colourful','Premium / luxury']],['logoav','Is your logo available?','sel',0,YN],['banav','Are banner images available?','sel',0,YN],['resp','Mobile responsive required?','sel',0,YN],['refs','Website reference links','ta']]},
+{t:'Technical',h:'Domain, hosting and add-ons.',f:[['dom','Do you already own a domain?','sel',0,YN],['domn','Domain name'],['host','Do you have hosting?','sel',0,YN],['hostp','Hosting provider'],['bmail','Need business email?','sel',0,YN],['seo','Need SEO optimization?','sel',0,YN],['ga','Need Google Analytics?','sel',0,YN],['fbp','Need Facebook Pixel?','sel',0,YN],['train','Need admin training?','sel',0,YN]]},
+{t:'Additional',h:'Last details before you review.',f:[['launch','Expected launch date','date'],['budget','Estimated budget'],['addf','Additional features','ta'],['instr','Special instructions','ta'],['appr','Contact person for project approval']]}
+];
+const PF=[['name','Product name','',1],['cat','Product category'],['orig','Original price (₹)','number'],['sell','Selling price (₹)','number',1],['size','Weight / size'],['var','Available variants'],['stock','Stock availability','sel',0,['In stock','Limited stock','Made to order','Out of stock']],['sku','SKU (optional)'],['desc','Product description','ta']];
+const TOTAL=S.length+1;
+let i=0,D={features:[],pay:[]},P=[{files:[]}],logo=[],E={};
+const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function fld(f,v,attr){const[k,l,t,r,o]=f;const lab=`<label for="${attr}${k}">${l}${r?' <span class="req">*</span>':''}</label>`;
+ if(t==='multi')return `<fieldset class="full" style="border:0;padding:0;margin:0"><span class="lbl">${l}</span><div class="opts">${o.map(x=>`<label class="opt"><input type="checkbox" data-m="${k}" value="${esc(x)}" ${(v||[]).includes(x)?'checked':''}>${x}</label>`).join('')}</div></fieldset>`;
+ const wrap=t==='ta'?'full':'';
+ let inp=t==='ta'?`<textarea id="${attr}${k}" rows="3" ${attr}>${esc(v)}</textarea>`:t==='sel'?`<select id="${attr}${k}" ${attr}><option value="">Select</option>${o.map(x=>`<option ${v===x?'selected':''}>${x}</option>`).join('')}</select>`:`<input id="${attr}${k}" type="${t||'text'}" value="${esc(v)}" ${attr}>`;
+ inp=inp.replace(/ (d|p)$|>/,m=>m);return `<div class="${wrap}">${lab}${inp.replace(attr+'>',`data-k="${k}" data-s="${attr}">`).replace(`${attr}>`,`data-k="${k}" data-s="${attr}">`)}<div class="err" id="e-${attr}${k}"></div></div>`}
+function files(label,id,list,multi){return `<div class="full"><span class="lbl">${label}</span><label class="drop">Choose ${multi?'images':'an image'}<input type="file" hidden accept="image/*" ${multi?'multiple':''} data-f="${id}"></label><div class="thumbs">${list.map((f,n)=>`<div><img alt="" src="${URL.createObjectURL(f)}"><button type="button" aria-label="Remove image" data-rm="${id}:${n}">×</button></div>`).join('')}</div></div>`}
+function step(){
+ const s=S[i];
+ if(i===TOTAL-1)return `<h2>Review your details</h2><p class="hint">Check everything, then submit.</p>`+S.map((s,n)=>`<div class="rev"><header><h3>${s.t}</h3><button class="link" style="color:var(--btn)" data-go="${n}">Edit</button></header>`+(n===2?P.map(p=>`<p style="margin:6px 0;font-size:.9rem">${esc(p.name||'Unnamed')} · ₹${esc(p.sell||'–')} · ${p.files.length} image(s)</p>`).join(''):`<dl>${s.f.filter(f=>f[2]!=='logo'&&D[f[0]]&&D[f[0]].length).map(f=>`<div><dt>${f[1]}</dt><dd>${esc([].concat(D[f[0]]).join(', '))}</dd></div>`).join('')}</dl>`)+`</div>`).join('');
+ if(i===2)return `<h2>${s.t}</h2><p class="hint">${s.h}</p>`+P.map((p,n)=>`<div class="prod"><header><h3>Product ${n+1}</h3>${P.length>1?`<button class="link" data-del="${n}">Remove product</button>`:''}</header><div class="grid">${PF.map(f=>{const h=fld(f,p[f[0]],'p'+n+'-');return h.replace(/data-s="p\d+-"/,`data-p="${n}"`)}).join('')}<div><label>Discount (%)</label><input readonly id="disc${n}" value="${p.disc??''}" placeholder="Calculated automatically"></div>${files('Product images','p'+n,p.files,1)}</div></div>`).join('')+`<button class="ghost" data-add>Add Another Product</button>`;
+ return `<h2>${s.t}</h2><p class="hint">${s.h}</p><div class="grid">${s.f.map(f=>f[2]==='logo'?files(f[1],'logo',logo,0):fld(f,D[f[0]],'d-')).join('')}</div>`}
+function render(){
+ const pct=Math.round((i+1)/TOTAL*100);
+ $('#app').innerHTML=`<div class="top"><span>Step ${i+1} of ${TOTAL}: ${i===TOTAL-1?'Review':S[i].t}</span><span>${pct}% complete</span></div><div class="bar" role="progressbar" aria-valuenow="${pct}"><i style="width:${pct}%"></i></div><div class="step" id="step">${step()}</div><div class="nav"><button class="ghost" data-prev ${i?'':'disabled'}>Previous</button>${i===TOTAL-1?'<button class="btn" data-submit>Submit requirements</button>':`<button class="btn" data-next>${i===TOTAL-2?'Review':'Next'}</button>`}</div>`;
+ showErr()}
+function showErr(){for(const k in E){const el=document.getElementById('e-'+k);if(el)el.textContent=E[k]}}
+function check(n){E={};if(n===2){P.forEach((p,j)=>{if(!(p.name||'').trim())E[`p${j}-name`]='Product name is required';if(p.sell===undefined||p.sell==='')E[`p${j}-sell`]='Selling price is required'})}
+ else S[n].f.forEach(f=>{const v=D[f[0]];const id='d-'+f[0];if(f[3]&&!(v||'').trim())E[id]=f[1]+' is required';else if(v&&f[2]==='email'&&!/^\S+@\S+\.\S+$/.test(v))E[id]='Enter a valid email address';else if(v&&f[2]==='tel'&&v.replace(/\D/g,'').length<10)E[id]='Enter a valid phone number'});
+ return !Object.keys(E).length}
+function go(n){i=n;render();$('#start').scrollIntoView({behavior:'smooth'})}
+document.addEventListener('input',e=>{const t=e.target,k=t.dataset.k;if(!k)return;
+ if(t.dataset.p!==undefined){const p=P[+t.dataset.p];p[k]=t.value;if(k==='orig'||k==='sell'){const o=parseFloat(p.orig),s=parseFloat(p.sell);p.disc=o>0&&s>=0&&s<=o?Math.round((o-s)/o*1000)/10:'';$('#disc'+t.dataset.p).value=p.disc}}
+ else D[k]=t.value});
+document.addEventListener('change',e=>{const t=e.target;
+ if(t.dataset.m){const a=D[t.dataset.m];t.checked?a.push(t.value):a.splice(a.indexOf(t.value),1)}
+ if(t.dataset.f){const id=t.dataset.f,add=[...t.files].filter(f=>f.size<5*1048576);if(id==='logo')logo=add.slice(0,1);else P[+id.slice(1)].files.push(...add);render()}});
+document.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;const d=t.dataset;
+ if('prev' in d)go(i-1);
+ if('next' in d&&check(i))go(i+1);else if('next' in d)showErr();
+ if('add' in d){P.push({files:[]});render()}
+ if(d.del){P.splice(+d.del,1);render()}
+ if(d.go)go(+d.go);
+ if(d.rm){const[id,n]=d.rm.split(':');(id==='logo'?logo:P[+id.slice(1)].files).splice(+n,1);render()}
+ if('submit' in d){for(let k=0;k<S.length;k++)if(!check(k)){go(k);return}
+  const ref='ALN-'+Date.now().toString(36).toUpperCase();
+  $('#app').innerHTML=`<div class="ok"><h2>Thank you. We have your requirements.</h2><p>Your submission ID is</p><code>${ref}</code><p style="color:var(--mut)">This is a design preview, so nothing was saved.</p></div>`;$('#start').scrollIntoView({behavior:'smooth'})}});
+render();
+</script>
+</body>
+</html>
